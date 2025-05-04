@@ -16,8 +16,8 @@ conn = psycopg2.connect(
 @app.get("/")
 def hello():
     cur = conn.cursor()
-    cur.execute("SELECT descricao FROM cs_acoes;")
-    msg = cur.fetchall()[::-1][0][0]
+    cur.execute("SELECT descricao FROM cs_acoes ORDER BY acao_id DESC LIMIT 1;")
+    msg = cur.fetchall()
     cur.close()
     r = analisadorSentimento(msg)
     return r
