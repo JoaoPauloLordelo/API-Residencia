@@ -14,7 +14,7 @@ conn = psycopg2.connect(
 )
 
 @app.get("/")
-def hello():
+def selectLastRow():
     cur = conn.cursor()
     cur.execute("SELECT descricao FROM cs_acoes ORDER BY acao_id DESC LIMIT 1;")
     msg = cur.fetchall()
