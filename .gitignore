@@ -1,3 +1,4 @@
 #Minha Venv
 apiResidencia
 .venv/
+__pycache__/
