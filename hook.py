@@ -31,7 +31,7 @@ def  after_insert_hook(mapper, connection: Connection, target):
     except HTTPException as e:
         print("Erro ao buscar ação após insert:", str(e.detail))
 
-#obs: função não será utilizada, esperando um metodo get pra modificar, cs_actions é referente ao modelo no banco postgres, nome pode ser mudado.
+
 ##mapper: mapeador do sqlalchemy, nesse caso pegaria o parametro cs_actions
 ##connection, conexão com o banco de dados
 ##target: instancia da classe do modelo
