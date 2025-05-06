@@ -11,10 +11,10 @@ class Sentimento(BaseModel):
 
 # ===== Configuracao do banco de dados =====
 DB_CONFIG = {
-    "host": "localhost",
-    "dbname": "postgres",  # nome do banco no pgAdmin
-    "user": "postgres",
-    "password": "1234",
+    "host": "191.195.32.239",
+    "dbname": "sq07_db",  # nome do banco no pgAdmin
+    "user": "squad07",
+    "password": "itpSquad07",
     "port": 5432,
 }
 
