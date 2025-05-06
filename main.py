@@ -8,7 +8,7 @@ conexao = psycopg2.connect(database = "sq07_db", host = "191.195.32.239", user =
 
 print(conexao.status) #checkando conexão, se retornar 1 deu certo 
 
-@app.get("/") #rota, local onde deve ser colocado no site
+@app.get("/") #rota, local onde deve ser colocado no sitee
 
 def home():
     return " Api online"
