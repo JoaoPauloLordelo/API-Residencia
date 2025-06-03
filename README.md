@@ -20,30 +20,23 @@ Por fim, importe o nosso arquivo para o seu banco de dados
 
             !! Função trigger para banco de dados SQL !!
 
--- 1. Criar a Função de Trigger
 -- Esta função será chamada após cada inserção na tabela cs_acoes
+
 CREATE OR REPLACE FUNCTION notificar_nova_acao_insert()
 RETURNS TRIGGER AS $$
 BEGIN
--- Envia o acao_id da nova linha como payload da notificação para o canal 'nova_acao_channel'.
--- O payload precisa ser uma string, então convertemos o ID para texto.
 PERFORM pg_notify('nova_acao_channel', NEW.acao_id::text);
-
--- O valor de retorno é ignorado para triggers AFTER, mas é boa prática retornar NEW.
 RETURN NEW;
 END;
 
 $$
 LANGUAGE plpgsql;
 
--- 2. Criar o Trigger na Tabela cs_acoes
--- Este trigger acionará a função notificar_nova_acao_insert() após cada operação de INSERT.
+!! 2 Criar o trigger na tabela cs_acoes !!
+
 CREATE TRIGGER trigger_cs_acoes_insert
 AFTER INSERT ON cs_acoes
 FOR EACH ROW
 EXECUTE FUNCTION notificar_nova_acao_insert();
-
-
-
 
 $$
